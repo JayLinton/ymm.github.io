@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炫酷平滑渐变文字</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 1200px;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-text {
+            font-size: 15rem;
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.1;
+            margin: 0;
+            position: relative;
+            background: linear-gradient(45deg, 
+                #a18cd1 0%, 
+                #fbc2eb 20%, 
+                #ffecd2 40%, 
+                #d4fc79 60%, 
+                #96e6a1 80%, 
+                #00dbde 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 12s ease infinite;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            letter-spacing: -5px;
+            padding: 20px;
+        }
+        
+        /* 平滑渐变动画 */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .subtitle {
+            font-size: 2rem;
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 60px;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .info-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .info-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #a18cd1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-item p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        
+        .background-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+        }
+        
+        .circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: #a18cd1;
+            top: 10%;
+            left: 5%;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .circle:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background: #fbc2eb;
+            bottom: 5%;
+            right: 10%;
+            animation: float 18s infinite ease-in-out 2s;
+        }
+        
+        .circle:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: #00dbde;
+            top: 40%;
+            right: 20%;
+            animation: float 12s infinite ease-in-out 4s;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, 30px) rotate(90deg); }
+            50% { transform: translate(0, 40px) rotate(180deg); }
+            75% { transform: translate(-30px, 20px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        .responsive-text {
+            font-size: 1.5rem;
+            margin-top: 50px;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.8;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 1200px) {
+            .hero-text { font-size: 12rem; }
+        }
+        
+        @media (max-width: 900px) {
+            .hero-text { font-size: 9rem; }
+            .subtitle { font-size: 1.5rem; }
+            .info-content { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-text { 
+                font-size: 5rem; 
+                letter-spacing: -2px;
+                padding: 10px;
+            }
+            .subtitle { font-size: 1.2rem; }
+            .info-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    
+    <div class="container">
+        <h1 class="hero-text">杨妙妙怎么这么可爱</h1>
+        
+    </div>
+    
+    <script>
+        // 添加简单的标题循环效果
+        const heroText = document.querySelector('.hero-text');
+        const originalText = heroText.textContent;
+        const texts = ["炫酷文字", "CSS动画", "渐变效果", "视觉艺术"];
+        let index = 0;
+        
+        function changeText() {
+            heroText.style.opacity = 0;
+            setTimeout(() => {
+                index = (index + 1) % texts.length;
+                heroText.textContent = texts[index];
+                heroText.style.opacity = 1;
+            }, 500);
+        }
+        
+        // 是否启用文字轮换（可根据需要开启）
+        // setInterval(changeText, 3000);
+    </script>
+</body>
+</html>
